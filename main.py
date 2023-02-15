@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import messagebox
 from tkinter import ttk
+
+
 window = tk.Tk()
 window.title("Age Calculator")
 window.geometry("475x300")
@@ -15,6 +17,7 @@ def exit():
 def get_age():
     day = int(e1.get())
     month =month_chosen.current()
+    print(month)
     year =int(e3.get())
   
     if month > 12:
@@ -31,7 +34,8 @@ def get_age():
 
       # Check for invalid dates in 31-day months:
       if month in (1, 3, 5, 7, 8, 10, 12) and not (1 <= m <= 31):
-          return False
+        print("line 36", month)
+        return False
       # Check for invalid dates in 30-day months:
       elif month in (4, 6, 9, 11) and not (1 <= d <= 30):
           return False
@@ -59,7 +63,8 @@ e1=tk.Entry(window,width=5)
 e2=tk.Entry(window,width=5)
 
 n = tk.StringVar()
-month_chosen = ttk.Combobox(window, textvariable = n, width=12)
+
+month_chosen = ttk.Combobox(window, textvariable = n, width=12, state="readonly")
 
 # Adding combobox drop down list
 month_chosen['values'] = ('Select a date...', 
@@ -79,7 +84,7 @@ month_chosen['values'] = ('Select a date...',
 
 
 
-
+print(month_chosen)
 
 
 
@@ -99,7 +104,6 @@ l_d.place(x=100,y=70)
 l_m.place(x=100,y=95)
 l_y.place(x=100,y=120)
 e1.place(x=180,y=70)
-#e2.place(x=180,y=95)
 month_chosen.place(x=180,y=95)
 e3.place(x=180,y=120)
 b1.place(x=100,y=150)
