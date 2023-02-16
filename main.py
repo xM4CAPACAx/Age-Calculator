@@ -22,27 +22,36 @@ def get_age():
   
     if month > 12:
       print("that month does not exist")
+      return
     elif month < 1:
       print("that month does not exist")
+      return
 
-    def isValidDate(y, m, d):
+    if day > 31:
+      print("that day does not exist")
+      return
+    elif day < 1:
+      print("that day does not exist")
+      return
 
-      # If month is outside the bounds of 1 to 12, return False:
+    if year > 2023:
+      print("that year hasnt come yet")
+      return
+
+
+      
+  
+    def isValidDate(year, month, day):
+
       if (1 < month > 12):
           return False
-      # After this point, you can assume the month is valid:
-
-      # Check for invalid dates in 31-day months:
       if month in (1, 3, 5, 7, 8, 10, 12) and not (1 <= m <= 31):
         print("line 36", month)
         return False
-      # Check for invalid dates in 30-day months:
       elif month in (4, 6, 9, 11) and not (1 <= d <= 30):
           return False
-      # Check for invalid dates in February:
-      elif month == 2 and not (1 <= d <= 28):
+      if month == 2 and not (1 <= d <= 28):
           return False
-      # Date passes all checks and is valid, so return True:
       return True
         
     age = today.year-year-((today.month, today.day)<(month,day))
